@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+	{% for item in objectsList %}
+	<p>{{item.menu}}</p>
+	{% endfor %}
+</div>
+
+{% endblock content %}

@@ -4,6 +4,10 @@
 <div>
 	{% for item in objectsList %}
 	<p>{{item.menu}}</p>
+	<a href="{% url 'update' item.pk %}">変更</a>
+	<form action="{% url 'delete' item.pk %}" method="POST">{% csrf_token %}
+		<input type="submit" value="削除">
+	</form>
 	{% endfor %}
 </div>
 

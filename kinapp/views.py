@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from .models import KintoreModel
@@ -23,3 +23,14 @@ class CreateKintore(CreateView):
 	def form_valid(self, form):
 		form.instance.user = self.request.user
 		return super().form_valid(form)
+
+class UpdateKintore(UpdateView):
+	template_name = 'update.html'
+	model = KintoreModel
+	fields = ('bui', 'menu', 'kaisu', 'setsu')
+	success_url = reverse_lazy('home')
+
+class DeleteKintore(DeleteView):
+	template_name = 'home.html'
+	model = KintoreModel
+	success_url = reverse_lazy('home')
